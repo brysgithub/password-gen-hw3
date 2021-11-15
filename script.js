@@ -11,10 +11,10 @@ var contEmo = false;
 
 // Character Library
 var charLib = {
-  upc: ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"],
+  upc: ["A","B","C"],
   low: ["a","B","c"],
-  sym: ["!","@","#"],
   num: ["1","2","3"],
+  sym: ["!","@","#"],
   emo: ["🤡","🦍","🍆"],
 };
 
@@ -22,13 +22,16 @@ var charLib = {
 function generatePassword() {
   alert("Choose your password settings!");
   passLength = prompt("Choose password length (8 to 128 characters) Default 8");
-  if (passLength >= 8 && passLength <= 128){
-    return
-  };
+    // find a way to kick user back to passLength input
+    if (passLength <= 8 && passLength >= 128){
+      console.log("bad pass length")
+    } else { 
+      
+    }
   contUpc = confirm("Include UPPERCASE letters?");
   contLow = confirm("Include lowercase letters?");
-  contSym = confirm("Include symbol characters?");
   contNum = confirm("Include numbers?");
+  contSym = confirm("Include symbol characters?");
   contEmo = confirm("🤡 Include emojis? 🤡");
   // var indexPointer = math.floor(math.random()*myList.length);
   // var randomSelection = myList[indexPointer];

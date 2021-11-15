@@ -30,3 +30,11 @@ var myList = ["a","b","c","d","e"]  // defines array
 var indexPointer = math.floor(Math.random()*myList.length); //generates random number based on length of array
 
 var randomSelection = myList[indexPointer];
+
+# Password gen logic
+
+- grab random key from charLib object 
+    - exclude keys those not chosen by user
+    - grab random character from array
+- output character to password as string
+- for loop until user spec length is reached
