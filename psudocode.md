@@ -10,7 +10,7 @@
     - should number, lower case letters, uppercase letters,
         spec characters, emojis 🤡 button maybe?
     
-    - NOTE TO SELF: `Maybe try assigning a value to every character (array?). Select character using a random number generator, add to string, repeat until desired length. Maybe randomize string last for good measure. Repeat if it doesn't match requirements?` !possible bad idea!
+    - NOTE TO SELF: `Maybe try using array value to randomly select characters? Select character using a random number generator, add to string, repeat until desired length. Maybe randomize string last for good measure. Repeat if it doesn't match requirements?` !possible bad idea!
 
 #  What steps are needed to build a password.
 - Make a list that only has the type and combination of     characters were looking for 
@@ -22,3 +22,11 @@
 - add our randomly selected character to out password
 
 - repeat until password is the requested length (user imput)
+
+
+// IMPORTANT FOR HOMEWORK!
+var myList = ["a","b","c","d","e"]  // defines array
+
+var indexPointer = math.floor(Math.random()*myList.length); //generates random number based on length of array
+
+var randomSelection = myList[indexPointer];
