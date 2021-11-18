@@ -13,7 +13,7 @@
     - NOTE TO SELF: `Maybe try using array value to randomly select characters? Select character using a random number generator, add to string, repeat until desired length. Maybe randomize string last for good measure. Repeat if it doesn't match requirements?` !possible bad idea!
 
 #  What steps are needed to build a password.
-- Make a list that only has the type and combination of     characters were looking for 
+- Make a list that only has the type and combination of characters were looking for 
 
 - make list that only has the type of characters matching the options
 
