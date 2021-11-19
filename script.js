@@ -11,11 +11,11 @@ var boolEmo;
 
 // TODO: concat chosen arrays into avalable character array. Or push character library arry to chosenChar
 // Character Library
-var upc = ["A","B","C"];
-var low = ["a","B","c"];
-var int = ["1","2","3"];
-var sym = ["!","@","#"];
-var emo = ["🤡","🦍","🧠"];
+var upc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var low = ["a","B","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var int = ["1","2","3","4","5","6","7","8","9","0"];
+var sym = ["!","@","#","%","^","&","*","(",")","-","_","=","+","?","<",">","[","]","{","}","|","/"];
+var emo = ["🤡","🦍","🧠","👻","👽","☠️","🗿","💯","🅱️"];
 
 // var chosenChar = [];
 
@@ -54,13 +54,14 @@ function userOptions() {
     
   } 
 
+// random character from array
 function randomChar(array) {
   var indexPointer = Math.floor(Math.random()*array.length);
   var randomSelection = array[indexPointer];
   return randomSelection;
 };
 
-// User input prompts
+// choose characters and push into array
 function generatePassword() {
   var userInput = userOptions();
   var passMem = [];
