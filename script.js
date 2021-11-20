@@ -20,6 +20,7 @@ var int = ["1","2","3","4","5","6","7","8","9","0"];
 var sym = ["!","@","#","%","^","&","*","(",")","-","_","=","+","?","<",">","[","]","{","}","|","/"];
 var emo = ["🤡","🦍","🧠","👻","👽","☠️","🗿","💯","🅱️"];
 
+// Character Library array
 var charUsed = [];
 var passString = "";
 
@@ -68,17 +69,28 @@ function generatePassword() {
       alert("Please enter a number. Max 128 Min 8")
       return;
     } else alert("Password length OK");
+  
   boolUpc = confirm("Include UPPERCASE letters?");
-  boolLow = confirm("Include lowercase letters?");
-  boolInt = confirm("Include numbers?");
-  boolSym = confirm("Include symbol characters?");
-  boolEmo = confirm("🤡 Include emojis? 🤡");
-    if (boolUpc === false && boolLow === false && boolInt === false && boolSym === false && boolEmo === false) {
-      alert("Please choose at least one option. Help me out here.");
-      return;
-    } else mergeArray(); randomChar(charUsed); loopFillPass(charUsed); console.log(charUsed);
 
-    return passString;
+  boolLow = confirm("Include lowercase letters?");
+
+  boolInt = confirm("Include numbers?");
+
+  boolSym = confirm("Include symbol characters?");
+  
+  boolEmo = confirm("🤡 Include emojis? 🤡");
+
+  if (boolUpc === false && boolLow === false && boolInt === false && boolSym === false && boolEmo === false) {
+    alert("Please choose at least one option. Help me out here.");
+    return;
+  
+  } else {
+    mergeArray(); 
+    randomChar(charUsed); 
+    loopFillPass(charUsed); 
+    console.log(charUsed);
+  }
+  return passString;
 };
 
 console.log(passString)
@@ -87,8 +99,10 @@ console.log(passString)
 function randomChar(array) {
   var indexPointer = array[Math.floor(Math.random() * array.length)];
   var randomSelection = array[indexPointer];
+
   console.log("log the output of randomSelection");
   console.log(randomSelection);
+
   return randomSelection;
 };
 
@@ -96,10 +110,13 @@ function randomChar(array) {
 function loopFillPass(array) { 
   for (let i = 0 + count; i < passLength; i++) {
   randomChar(array);
+  
   console.log("log count variable");
   console.log(count)
   console.log("log charUsed array");
   console.log(charUsed);
+  console.log("iteration");
+  console.log(i);
   }
 };
 
