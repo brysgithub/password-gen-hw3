@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Declare variables
+// Declared global variables
 var passLength;
 var boolUpc;
 var boolLow;
@@ -9,15 +9,12 @@ var boolSym;
 var boolInt;
 var boolEmo;
 
-// TODO: concat chosen arrays into avalable character array. Or push character library arry to chosenChar
 // Character Library
 var upc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var low = ["a","B","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var int = ["1","2","3","4","5","6","7","8","9","0"];
 var sym = ["!","@","#","%","^","&","*","(",")","-","_","=","+","?","<",">","[","]","{","}","|","/"];
 var emo = ["🤡","🦍","🧠","👻","👽","☠️","🗿","💯","🅱️"];
-
-// var chosenChar = [];
 
 // Gather user info
 function userOptions() {
@@ -28,8 +25,8 @@ function userOptions() {
       alert("Invalid input. Max 128 Min 8");
       return;
     } else if (isNaN(passLength) === true){
-      alert("Please enter a number. Max 128 Min 8");
-      return
+      alert("Please enter a number. Max 128 Min 8")
+      return;
     } else alert("Password length OK")
   boolUpc = confirm("Include UPPERCASE letters?");
   boolLow = confirm("Include lowercase letters?");
@@ -37,10 +34,11 @@ function userOptions() {
   boolSym = confirm("Include symbol characters?");
   boolEmo = confirm("🤡 Include emojis? 🤡");
     if (boolUpc === false && boolLow === false && boolInt === false && boolSym === false && boolEmo === false) {
-      alert("Please choose at least one option! Jeeze.");
+      alert("Please choose at least one option. Help me out here.");
       return;
     };
-
+    
+    // User options object
     var passOptions = {
       passLength: passLength,
       boolUpc: boolUpc,
@@ -50,47 +48,47 @@ function userOptions() {
       boolEmo: boolEmo
     };
     return passOptions;
-      // console.log(passOptions);
     
   } 
 
 // random character from array
 function randomChar(array) {
-  var indexPointer = Math.floor(Math.random()*array.length);
+  var indexPointer = Math.floor(Math.random() * array.length);
   var randomSelection = array[indexPointer];
   return randomSelection;
 };
 
-// choose characters and push into array
+// choose characters from user input keys in passOptions and push into array
 function generatePassword() {
   var userInput = userOptions();
   var passMem = [];
   var charBanked = [];
   var charSelected = [];
   if (userInput.boolUpc) {
-    charBanked = charBanked.concat(boolUpc);
-    charSelected.push(randomChar(boolUpc));
+    charSelected = charBanked.concat(upc);
+    charSelected.push(randomChar(passMem));
   }
   
   if (userInput.boolLow) {
-    charBanked = charBanked.concat(boolLow);
-    charSelected.push(randomChar(boolLow));
+    charSelected = charBanked.concat(low);
+    charSelected.push(randomChar(passMem));
   }
   
   if (userInput.boolInt) {
-    charBanked = charBanked.concat(boolInt);
-    charSelected.push(randomChar(boolInt));
+    charSelected = charBanked.concat(int);
+    charSelected.push(randomChar(passMem));
   }
   
   if (userInput.boolSym) {
-    charBanked = charBanked.concat(boolSym);
-    charSelected.push(randomChar(boolSym));
+    charSelected = charBanked.concat(sym);
+    charSelected.push(randomChar(passMem));
   }
   
   if (userInput.boolEmo) {
-    charBanked = charBanked.concat(boolEmo);
-    charSelected.push(randomChar(boolEmo));
+    charSelected = charBanked.concat(emo);
+    charSelected.push(randomChar(passMem));
   }
+
   for (let index = 0; index < userInput.length; index++) {
     const charsBanked = randomChar(charBanked);
     passMem.push(charsBanked);
@@ -98,21 +96,11 @@ function generatePassword() {
 
   for (let index = 0; index < charSelected.length; index++) {
     passMem[index] = charSelected[index];
-    
   }
 
   return passMem.join("");
-
 };
 
-// Generate random output from array 
-// var myList = ["a","b","c","d","e"]  // defines array Make myList 
-
-// var indexPointer = math.floor(math.random()*myList.length); //generates random number based on length of array
-
-// var randomSelection = myList[indexPointer];
-
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
