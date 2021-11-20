@@ -9,7 +9,8 @@ var boolSym;
 var boolInt;
 var boolEmo;
 
-var trueAnswers = [boolUpc, boolLow, boolSym, boolInt, boolEmo];
+var count = 0;
+var randomSelection = "";
 
 
 // Character Library
@@ -27,26 +28,31 @@ function mergeArray() {
   if (boolUpc) {
     charUsed = upc.concat(charUsed);
     passString += randomChar(upc);
+    count++
   }
 
   if (boolLow) {
     charUsed = low.concat(charUsed);
     passString += randomChar(low);
+    count++
   }
 
   if (boolInt) {
     charUsed = int.concat(charUsed);
     passString += randomChar(int);
+    count++
   }
 
   if (boolSym) {
     charUsed = sym.concat(charUsed); 
     passString += randomChar(sym);
+    count++
   }
 
   if (boolEmo) {
     charUsed = emo.concat(charUsed); 
     passString += randomChar(emo);
+    count++
   }
 }
 
@@ -58,7 +64,7 @@ function generatePassword() {
     if (passLength > 128 || passLength < 8 || passLength === null){
       alert("Invalid input. Max 128 Min 8");
       return;
-    } else if (isNaN(passLength) === true){
+    } else if (isNaN(passLength)){
       alert("Please enter a number. Max 128 Min 8")
       return;
     } else alert("Password length OK");
@@ -70,30 +76,33 @@ function generatePassword() {
     if (boolUpc === false && boolLow === false && boolInt === false && boolSym === false && boolEmo === false) {
       alert("Please choose at least one option. Help me out here.");
       return;
-    } else mergeArray(); randomChar(charUsed); // loopFillPass(charUsed);
+    } else mergeArray(); randomChar(charUsed); loopFillPass(charUsed); console.log(charUsed);
 
     return passString;
 };
 
 console.log(passString)
-console.log(mergeArray)
 
 // random character from array
 function randomChar(array) {
-  var indexPointer = Math.floor(Math.random() * array.length);
+  var indexPointer = array[Math.floor(Math.random() * array.length)];
   var randomSelection = array[indexPointer];
+  console.log("log the output of randomSelection");
+  console.log(randomSelection);
   return randomSelection;
 };
 
 // loop times minus number of true user choice booleans
 function loopFillPass(array) { 
-  var addTrue = trueAnswers.filter(Boolean).length;
-  console.log(addTrue)
-  // for (let i = 0 + addTrue; i < array.length; i++) {
-  // const element = array[i];
-  
-  //}
-}
+  for (let i = 0 + count; i < passLength; i++) {
+  randomChar(array);
+  console.log("log count variable");
+  console.log(count)
+  console.log("log charUsed array");
+  console.log(charUsed);
+  }
+};
+
 // writes password to form
 function writePassword() {
   var password = generatePassword();
