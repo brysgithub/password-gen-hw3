@@ -3,8 +3,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Declared global variables
 var passLength;
-var count = 0;
-var randomSelection = "";
 
 // Character Library
 var upc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -13,7 +11,7 @@ var int = ["1","2","3","4","5","6","7","8","9","0"];
 var sym = ["!","@","#","%","^","&","*","(",")","-","_","=","+","?","<",">","[","]","{","}","|","/"];
 var emo = ["🤡","🦍","🧠","👻","👽","☠️","🗿","💯","🅱️"];
 
-// make one big array by pushing chosen lib to new array
+// make one big array by pushing chosen library to new array
 function mergeArray(boolUpc,boolLow,boolInt,boolSym,boolEmo) {
   var charUsed = [];
   if (boolUpc) {
@@ -66,11 +64,13 @@ function generatePassword() {
   
   var boolEmo = confirm("🤡 Include emojis? 🤡");
 
+  // return if no options are chosen
   if (boolUpc === false && boolLow === false && boolInt === false && boolSym === false && boolEmo === false) {
     alert("Please choose at least one option. Help me out here.");
     return;
   
   } else {
+  // otherwise build passString
     var charUsed = mergeArray(boolUpc, boolLow, boolInt, boolSym, boolEmo);
 
     passString = loopFillPass(passLength, charUsed); 
@@ -81,13 +81,7 @@ function generatePassword() {
 // random character from array
 function randomChar(array) {
 
-    console.log("print array");
-    console.log(array);
-  
   var randomSelection = array[Math.floor(Math.random() * array.length)];
-
-    console.log("log the output of randomSelection");
-    console.log(randomSelection);
 
   return randomSelection;
 };
