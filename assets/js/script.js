@@ -3,7 +3,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Declared global variables
 var passLength;
-
 var count = 0;
 var randomSelection = "";
 
@@ -14,44 +13,37 @@ var int = ["1","2","3","4","5","6","7","8","9","0"];
 var sym = ["!","@","#","%","^","&","*","(",")","-","_","=","+","?","<",">","[","]","{","}","|","/"];
 var emo = ["🤡","🦍","🧠","👻","👽","☠️","🗿","💯","🅱️"];
 
-// make one big array
+// make one big array by pushing chosen lib to new array
 function mergeArray(boolUpc,boolLow,boolInt,boolSym,boolEmo) {
   var charUsed = [];
   if (boolUpc) {
     charUsed = upc.concat(charUsed);
-    // passString += randomChar(upc);
-    // count++
   }
 
   if (boolLow) {
     charUsed = low.concat(charUsed);
-    // passString += randomChar(low);
-    // count++
   }
 
   if (boolInt) {
     charUsed = int.concat(charUsed);
-    // passString += randomChar(int);
-    // count++
   }
 
   if (boolSym) {
-    charUsed = sym.concat(charUsed); 
-    // passString += randomChar(sym);
-    // count++
+    charUsed = sym.concat(charUsed);
   }
 
   if (boolEmo) {
     charUsed = emo.concat(charUsed); 
-    // passString += randomChar(emo);
-    // count++
   } return charUsed
 };
 
-// Gather user info
+// Gather user info, call password gen functions and fill password var
 function generatePassword() {
+  
   var passString = "";
   var passLength;
+  
+  // Specify and validate passLength input
   alert("Choose password settings");
   passLength = parseInt(prompt("Choose password length (8 to 128 characters)")); 
   alert("Password length set to " + passLength)
@@ -63,6 +55,7 @@ function generatePassword() {
       return;
     } else alert("Password length OK");
   
+  // boolean values for library selection
   var boolUpc = confirm("Include UPPERCASE letters?");
 
   var boolLow = confirm("Include lowercase letters?");
@@ -87,35 +80,37 @@ function generatePassword() {
 
 // random character from array
 function randomChar(array) {
-  console.log("print array");
-  console.log(array);
+
+    console.log("print array");
+    console.log(array);
+  
   var randomSelection = array[Math.floor(Math.random() * array.length)];
 
-  console.log("log the output of randomSelection");
-  console.log(randomSelection);
+    console.log("log the output of randomSelection");
+    console.log(randomSelection);
 
   return randomSelection;
 };
 
-// loop times minus number of true user choice booleans
+// loops and adds characters to passString
 function loopFillPass(passLength, array) { 
   var passString = "";
+
   for (let i = 0; i < passLength; i++) {
   
   passString += randomChar(array);
   
-  console.log("log passString");
-  console.log(passString)
-  console.log("iteration");
-  console.log(i);
+    console.log("log passString");
+    console.log(passString)
+    console.log("iteration");
+    console.log(i);
+
   } return passString
 };
 
 // writes password to form
 function writePassword() {
   var password = generatePassword();
-  console.log("log password");
-  console.log(password);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
